@@ -1,9 +1,10 @@
 import Banner from "@/components/Banner";
 import VaccineCard from "@/components/VaccineCard";
+import HospitalCard from "@/components/HospitalCard";
 
 const vaccineList: any = [
   {
-    imageUrl: "/img/moderna.jpg",
+    imgSrc: "/img/moderna.jpg",
     title: "Moderna",
     effectiveness: "94.1%",
     dosing: "2 Doses (4 Weeks between the shots)",
@@ -11,13 +12,28 @@ const vaccineList: any = [
       "Pain, Swelling, Redness at the injection site, Chills or shivers, Headache, Fatigue",
   },
   // {
-  //   imageUrl: "/img/astrazeneca.jpg",
+  //   imgSrc: "/img/astrazeneca.jpg",
   //   title: "AstraZeneca",
   //   effectiveness: "70.4 - 82.4%",
   //   dosing: "2 Doses (4-12 Weeks between the shots)",
   //   possibleSideEffect:
   //     "Pain at the injection site, Chills or shivers, Fever, Headache, Fatigue, Muscle pain, Thrombosis",
   // },
+];
+
+const hospitalsList: any = [
+  {
+    imgSrc: "/img/chula.jpg",
+    title: "Chulalongkorn Hospital",
+  },
+  {
+    imgSrc: "/img/rajavithi.jpg",
+    title: "Rajavithi Hospital",
+  },
+  {
+    imgSrc: "/img/thammasat.jpg",
+    title: "Thammasat Hospital",
+  },
 ];
 
 export default function Home() {
@@ -34,15 +50,8 @@ export default function Home() {
           alignContent: "space-around",
         }}
       >
-        {vaccineList.map((vaccine: any) => (
-          <VaccineCard
-            key={vaccine.title}
-            imageUrl={vaccine.imageUrl}
-            title={vaccine.title}
-            effectiveness={vaccine.effectiveness}
-            dosing={vaccine.dosing}
-            possibleSideEffect={vaccine.possibleSideEffect}
-          />
+        {hospitalsList.map((vaccine: any) => (
+          <HospitalCard imgSrc={vaccine.imgSrc} title={vaccine.title} />
         ))}
       </div>
     </main>

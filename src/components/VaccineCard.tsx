@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./VaccineCard.module.css";
 
 const VaccineCard = ({
-  imageUrl,
+  imgSrc,
   title,
   effectiveness,
   dosing,
@@ -11,12 +11,7 @@ const VaccineCard = ({
   return (
     <div className={styles.card}>
       <div className={styles.cardImg}>
-        <Image
-          src={imageUrl}
-          alt="Product Image"
-          fill={true}
-          objectFit="cover"
-        />
+        <Image src={imgSrc} alt="Product Image" fill={true} objectFit="cover" />
       </div>
       <div className={styles.cardText}>
         <h3>{title}</h3>
