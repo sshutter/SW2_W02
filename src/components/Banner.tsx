@@ -9,7 +9,7 @@ const Banner = () => {
         src={"/img/cover.jpg"}
         alt="Cover"
         fill={true}
-        objectFit="cover"
+        // objectFit="cover"
         priority
       />
       <div className={styles.bannerText}>

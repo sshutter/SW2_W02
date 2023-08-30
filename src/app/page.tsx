@@ -50,8 +50,12 @@ export default function Home() {
           alignContent: "space-around",
         }}
       >
-        {hospitalsList.map((vaccine: any) => (
-          <HospitalCard imgSrc={vaccine.imgSrc} title={vaccine.title} />
+        {hospitalsList.map((hospital: any) => (
+          <HospitalCard
+            imgSrc={hospital.imgSrc}
+            title={hospital.title}
+            key={hospital.title}
+          />
         ))}
       </div>
     </main>

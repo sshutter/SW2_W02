@@ -8,8 +8,7 @@ const HospitalCard = ({ imgSrc, title }: { imgSrc: string; title: string }) => {
           src={imgSrc}
           alt="Hospital Image"
           fill={true}
-          objectFit="cover"
-          className="object-right-top"
+          className="object-right-top object-cover"
         />
       </div>
       <div className="h-[10%] p-4 text-black align-bottom">
