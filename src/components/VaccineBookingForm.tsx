@@ -5,14 +5,11 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import {
   Button,
   FormControl,
-  FormControlLabel,
-  FormGroup,
   InputLabel,
   MenuItem,
   Select,
   TextField,
 } from "@mui/material";
-import dayjs from "dayjs";
 
 export default function VaccineBookingForm() {
   return (
