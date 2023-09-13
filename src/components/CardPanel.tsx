@@ -8,7 +8,8 @@ export default function CardPanel() {
     action: { vaccineName: string; rating: number }
   ) => {
     if (action.rating == 0) {
-      return ratingMap;
+      ratingMap.delete(action.vaccineName);
+      return new Map(ratingMap);
     } else {
       return new Map(ratingMap.set(action.vaccineName, action.rating));
     }
@@ -18,6 +19,7 @@ export default function CardPanel() {
     ratingReducer,
     new Map<string, number>()
   );
+
   return (
     <div>
       <div
@@ -54,7 +56,13 @@ export default function CardPanel() {
       </div>
 
       {Array.from(ratingMap).map((vaccine) => (
-        <div key={vaccine[0]} className="text-white mx-4 py-1">
+        <div
+          key={vaccine[0]}
+          className="text-white mx-4 py-1"
+          onClick={() => {
+            dispatchRating({ rating: 0, vaccineName: vaccine[0] });
+          }}
+        >
           {vaccine[0]}: {vaccine[1]}
         </div>
       ))}
