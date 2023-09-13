@@ -38,6 +38,7 @@ export default function CardPanel() {
           onRatingChange={(rating: number) => {
             dispatchRating({ rating: rating, vaccineName: "Chula" });
           }}
+          rating={ratingMap.get("Chula")}
         />
         <HospitalCard
           imgSrc={"/img/rajavithi.jpg"}
@@ -45,6 +46,7 @@ export default function CardPanel() {
           onRatingChange={(rating: number) => {
             dispatchRating({ rating: rating, vaccineName: "Rajavithi" });
           }}
+          rating={ratingMap.get("Rajavithi")}
         />
         <HospitalCard
           imgSrc={"/img/thammasat.jpg"}
@@ -52,6 +54,7 @@ export default function CardPanel() {
           onRatingChange={(rating: number) => {
             dispatchRating({ rating: rating, vaccineName: "Thammasat" });
           }}
+          rating={ratingMap.get("Thammasat")}
         />
       </div>
 

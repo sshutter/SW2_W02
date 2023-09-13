@@ -1,18 +1,18 @@
 import Image from "next/image";
 import InteractiveCard from "./InterActiveCard";
 import { Rating } from "@mui/material";
-import { useState } from "react";
 
 const HospitalCard = ({
   imgSrc,
   title,
   onRatingChange,
+  rating,
 }: {
   imgSrc: string;
   title: string;
   onRatingChange: Function;
+  rating: number | undefined;
 }) => {
-  const [rating, setRating] = useState<number | null>(0);
   return (
     <InteractiveCard>
       <div className="w-full h-[80%] relative rounded-t-lg">
@@ -30,9 +30,9 @@ const HospitalCard = ({
         className="h-[8%] w-full p-2"
         name="simple-controlled"
         value={rating}
-        onChange={(event, newValue: number | null) => {
+        onChange={(_, newValue: number | null) => {
           onRatingChange(newValue);
-          setRating(newValue);
+          // setRating(newValue);
         }}
       />
     </InteractiveCard>
