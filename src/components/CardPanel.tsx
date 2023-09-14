@@ -9,6 +9,7 @@ export default function CardPanel() {
   ) => {
     if (action.rating == 0) {
       ratingMap.delete(action.vaccineName);
+
       return new Map(ratingMap);
     } else {
       return new Map(ratingMap.set(action.vaccineName, action.rating));
@@ -19,7 +20,7 @@ export default function CardPanel() {
     ratingReducer,
     new Map<string, number>()
   );
-
+  console.log(ratingMap);
   return (
     <div>
       <div
@@ -38,6 +39,7 @@ export default function CardPanel() {
           onRatingChange={(rating: number) => {
             dispatchRating({ rating: rating, vaccineName: "Chula" });
           }}
+          rating={ratingMap.get("Chula")}
         />
         <HospitalCard
           imgSrc={"/img/rajavithi.jpg"}
@@ -45,6 +47,7 @@ export default function CardPanel() {
           onRatingChange={(rating: number) => {
             dispatchRating({ rating: rating, vaccineName: "Rajavithi" });
           }}
+          rating={ratingMap.get("Rajavithi")}
         />
         <HospitalCard
           imgSrc={"/img/thammasat.jpg"}
@@ -52,6 +55,7 @@ export default function CardPanel() {
           onRatingChange={(rating: number) => {
             dispatchRating({ rating: rating, vaccineName: "Thammasat" });
           }}
+          rating={ratingMap.get("Thammasat")}
         />
       </div>
 

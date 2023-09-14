@@ -1,18 +1,25 @@
 import Image from "next/image";
 import InteractiveCard from "./InterActiveCard";
 import { Rating } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const HospitalCard = ({
   imgSrc,
   title,
   onRatingChange,
+  rating,
 }: {
   imgSrc: string;
   title: string;
   onRatingChange: Function;
+  rating: any;
 }) => {
-  const [rating, setRating] = useState<number | null>(0);
+  // const [localRating, setRating] = useState<number | null>(rating);
+  // console.log("renderHospitalCard", rating, title);
+  // useEffect(() => {
+  //   console.log("h");
+  //   setRating(rating);
+  // }, [rating]);
   return (
     <InteractiveCard>
       <div className="w-full h-[80%] relative rounded-t-lg">
@@ -29,10 +36,11 @@ const HospitalCard = ({
       <Rating
         className="h-[8%] w-full p-2"
         name="simple-controlled"
-        value={rating}
-        onChange={(event, newValue: number | null) => {
+        value={rating || 0}
+        onChange={(_, newValue: number | null) => {
+          console.log(newValue);
           onRatingChange(newValue);
-          setRating(newValue);
+          // setRating(newValue);
         }}
       />
     </InteractiveCard>
