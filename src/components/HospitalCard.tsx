@@ -27,22 +27,29 @@ const HospitalCard = ({
           src={imgSrc}
           alt="Hospital Image"
           fill={true}
-          className="object-right-top object-cover rounded-t-lg"
+          className="object-cover rounded-t-lg"
         />
       </div>
-      <div className="w-full h-[10%] p-4 text-black align-center">
+      <div className="w-full h-[10%] p-[3px] text-black">
         <h3 className="font-sans font-bold">{title}</h3>
       </div>
-      <Rating
-        className="h-[8%] w-full p-2"
-        name="simple-controlled"
-        value={rating || 0}
-        onChange={(_, newValue: number | null) => {
-          console.log(newValue);
-          onRatingChange(newValue);
-          // setRating(newValue);
+      <div
+        className="flex justify-center items-center h-[8%] w-full"
+        onClick={(e) => {
+          e.stopPropagation();
+          console.log(e);
         }}
-      />
+      >
+        <Rating
+          name="simple-controlled"
+          value={rating || 0}
+          onChange={(e, newValue: number | null) => {
+            e.stopPropagation();
+            onRatingChange(newValue);
+            console.log(newValue);
+          }}
+        />
+      </div>
     </InteractiveCard>
   );
 };

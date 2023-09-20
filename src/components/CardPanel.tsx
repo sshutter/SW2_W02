@@ -1,18 +1,18 @@
 "use client";
+import Link from "next/link";
 import HospitalCard from "./HospitalCard";
 import { useReducer } from "react";
 
 export default function CardPanel() {
   const ratingReducer = (
     ratingMap: Map<string, number>,
-    action: { vaccineName: string; rating: number }
+    action: { hospitalName: string; rating: number }
   ) => {
     if (action.rating == 0) {
-      ratingMap.delete(action.vaccineName);
-
+      ratingMap.delete(action.hospitalName);
       return new Map(ratingMap);
     } else {
-      return new Map(ratingMap.set(action.vaccineName, action.rating));
+      return new Map(ratingMap.set(action.hospitalName, action.rating));
     }
   };
 
@@ -20,7 +20,14 @@ export default function CardPanel() {
     ratingReducer,
     new Map<string, number>()
   );
-  console.log(ratingMap);
+
+  // For Get all hospital data
+  const mockHospitalData = [
+    { hid: "001", name: "Chulalongkorn", imgSrc: "/img/chula.jpg" },
+    { hid: "002", name: "Rajavithi", imgSrc: "/img/rajavithi.jpg" },
+    { hid: "003", name: "Thammasat", imgSrc: "/img/thammasat.jpg" },
+  ];
+
   return (
     <div>
       <div
@@ -33,41 +40,34 @@ export default function CardPanel() {
           alignContent: "space-around",
         }}
       >
-        <HospitalCard
-          imgSrc={"/img/chula.jpg"}
-          title={"Chalalongkorn Hospital"}
-          onRatingChange={(rating: number) => {
-            dispatchRating({ rating: rating, vaccineName: "Chula" });
-          }}
-          rating={ratingMap.get("Chula")}
-        />
-        <HospitalCard
-          imgSrc={"/img/rajavithi.jpg"}
-          title={"Rajavithi Hospital"}
-          onRatingChange={(rating: number) => {
-            dispatchRating({ rating: rating, vaccineName: "Rajavithi" });
-          }}
-          rating={ratingMap.get("Rajavithi")}
-        />
-        <HospitalCard
-          imgSrc={"/img/thammasat.jpg"}
-          title={"Thammasat Hospital"}
-          onRatingChange={(rating: number) => {
-            dispatchRating({ rating: rating, vaccineName: "Thammasat" });
-          }}
-          rating={ratingMap.get("Thammasat")}
-        />
+        {mockHospitalData.map((hospital) => (
+          <Link
+            href={`/hospital/${hospital.hid}`}
+            key={hospital.hid}
+            className="w-1/4"
+          >
+            <HospitalCard
+              key={hospital.hid}
+              imgSrc={hospital.imgSrc}
+              title={`${hospital.name} Hospital`}
+              onRatingChange={(rating: number) => {
+                dispatchRating({ rating: rating, hospitalName: hospital.name });
+              }}
+              rating={ratingMap.get(hospital.name)}
+            />
+          </Link>
+        ))}
       </div>
 
-      {Array.from(ratingMap).map((vaccine) => (
+      {Array.from(ratingMap).map((hospital) => (
         <div
-          key={vaccine[0]}
+          key={hospital[0]}
           className="text-white mx-4 py-1"
           onClick={() => {
-            dispatchRating({ rating: 0, vaccineName: vaccine[0] });
+            dispatchRating({ rating: 0, hospitalName: hospital[0] });
           }}
         >
-          {vaccine[0]}: {vaccine[1]}
+          {hospital[0]}: {hospital[1]}
         </div>
       ))}
     </div>

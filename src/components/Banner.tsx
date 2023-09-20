@@ -2,6 +2,7 @@
 import Image from "next/image";
 import styles from "./Banner.module.css";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Banner = () => {
   const covers = [
@@ -11,6 +12,8 @@ const Banner = () => {
     "/img/cover4.jpg",
   ];
   let [index, setIndex] = useState(0);
+  const router = useRouter();
+
   return (
     <div
       className={styles.banner}
@@ -19,7 +22,7 @@ const Banner = () => {
       }}
     >
       <Image
-        className={`${styles.bannerImg} brightness-50`}
+        className={"brightness-50"}
         src={covers[index]}
         alt="Cover"
         fill={true}
@@ -34,6 +37,15 @@ const Banner = () => {
           Schedule Your Vaccine Today!
         </p>
       </div>
+      <button
+        className="bg-white text-[#3B88D2] border-[#3B88D2] font-semibold py-2 px-2 m-7 rounded z-30 absolute bottom-0 right-0 hover:bg-[#3B88D2] hover:text-white hover:border-transparent"
+        onClick={(e) => {
+          e.stopPropagation();
+          router.push("/hospital");
+        }}
+      >
+        Select Hospital For Vaccine Booking Now
+      </button>
     </div>
   );
 };

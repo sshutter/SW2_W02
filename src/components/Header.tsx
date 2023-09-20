@@ -7,7 +7,7 @@ const Header = () => {
       <HeaderItem title="Booking" pageRef="/booking" />
       <Image
         src="/img/logo.png"
-        className="h-[90%] w-auto j"
+        className="h-[90%] w-auto"
         alt="Logo"
         width={0}
         height={0}
