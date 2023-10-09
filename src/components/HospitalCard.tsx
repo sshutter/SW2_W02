@@ -11,15 +11,9 @@ const HospitalCard = ({
 }: {
   imgSrc: string;
   title: string;
-  onRatingChange: Function;
-  rating: any;
+  onRatingChange?: Function;
+  rating?: any;
 }) => {
-  // const [localRating, setRating] = useState<number | null>(rating);
-  // console.log("renderHospitalCard", rating, title);
-  // useEffect(() => {
-  //   console.log("h");
-  //   setRating(rating);
-  // }, [rating]);
   return (
     <InteractiveCard>
       <div className="w-full h-[80%] relative rounded-t-lg">
@@ -33,23 +27,27 @@ const HospitalCard = ({
       <div className="w-full h-[10%] p-[3px] text-black">
         <h3 className="font-sans font-bold">{title}</h3>
       </div>
-      <div
-        className="flex justify-center items-center h-[8%] w-full"
-        onClick={(e) => {
-          e.stopPropagation();
-          console.log(e);
-        }}
-      >
-        <Rating
-          name="simple-controlled"
-          value={rating || 0}
-          onChange={(e, newValue: number | null) => {
+
+      {onRatingChange ? (
+        <div
+          className="flex justify-center items-center h-[8%] w-full"
+          onClick={(e) => {
             e.stopPropagation();
-            onRatingChange(newValue);
-            console.log(newValue);
+            console.log(e);
           }}
-        />
-      </div>
+        >
+          <Rating
+            name="simple-controlled"
+            value={rating || 0}
+            onChange={(e, newValue: number | null) => {
+              e.stopPropagation();
+              onRatingChange(newValue);
+            }}
+          />
+        </div>
+      ) : (
+        ""
+      )}
     </InteractiveCard>
   );
 };
