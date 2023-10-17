@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./Banner.module.css";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const Banner = () => {
   const covers = [
@@ -13,6 +14,8 @@ const Banner = () => {
   ];
   let [index, setIndex] = useState(0);
   const router = useRouter();
+
+  const { data: session } = useSession();
 
   return (
     <div
@@ -37,6 +40,11 @@ const Banner = () => {
           Schedule Your Vaccine Today!
         </p>
       </div>
+      {session ? (
+        <div className="absolute top-20 right-10 font-semibold text-[#f2f2f2] text-xl">
+          Hello {session.user?.name}
+        </div>
+      ) : null}
       <button
         className="bg-white text-[#3B88D2] border-[#3B88D2] font-semibold py-2 px-2 m-7 rounded z-30 absolute bottom-0 right-0 hover:bg-[#3B88D2] hover:text-white hover:border-transparent"
         onClick={(e) => {
