@@ -3,11 +3,6 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 import getUserProfile from "@/libs/getUserProfile";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
-import dayjs, { Dayjs } from "dayjs";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/redux/store";
-import { BookingItem } from "../../../interfaces";
-import { addBookingItem } from "@/redux/features/bookSlice";
 
 export default async function Booking() {
   const session = await getServerSession(authOptions);
