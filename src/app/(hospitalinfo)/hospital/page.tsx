@@ -8,7 +8,7 @@ export default async function HospitalPage() {
   const hospitalJson = getHospitals();
   return (
     <main className="text-center p-5">
-      <h1 className="text-xl font-medium mt-[50px]">View Hospital Info</h1>
+      <h1 className="text-xl font-medium">View Hospital Info</h1>
       <Suspense fallback={<LinearProgress className="my-4" />}>
         <HospitalCatalog hospitalJson={hospitalJson} />
       </Suspense>

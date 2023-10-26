@@ -26,7 +26,7 @@ export default async function HospitalDetailPage({
   // });
 
   return (
-    <main className="text-center p-5 mt-[50px]">
+    <main className="text-center p-5">
       <h1 className="text-xl font-extrabold">{hospitalDetail.data.name}</h1>
       <div className="flex flex-row my-5">
         <Image
