@@ -1,3 +1,4 @@
+import { RootState } from "./../store";
 import { BookingItem } from "./../../../interfaces";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
