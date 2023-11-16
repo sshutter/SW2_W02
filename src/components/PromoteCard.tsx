@@ -18,6 +18,7 @@ export default function PromoteCard() {
         Get your vaccine today
         <button
           className="absolute rounded bg-white text-[#3B88D2] border-[#3B88D2] font-semibold py-2 px-2 hover:bg-[#3B88D2] hover:text-white hover:border-transparent bottom-0 left-0 w-[60%]"
+          id="play-btn"
           onClick={() => {
             setIsPlaying(!isPlaying);
           }}

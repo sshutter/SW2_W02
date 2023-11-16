@@ -18,6 +18,7 @@ export default async function HospitalCatalog({
           justifyContent: "space-around",
           alignContent: "space-around",
         }}
+        data-testid="hospital-catalog"
       >
         {hospitalReady.data.map((hospital: any) => (
           <Link
